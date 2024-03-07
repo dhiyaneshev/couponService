@@ -1,12 +1,13 @@
 package com.ford.apps.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
+@Data
+@Table(schema = "coupon")
 public class Coupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,4 +16,5 @@ public class Coupon {
     private String code;
     private String expDate;
     private int denomination;
+    private boolean isIssued;
 }
