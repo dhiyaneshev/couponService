@@ -8,8 +8,16 @@ public interface ICouponService {
 
     public Coupon createCoupon(Coupon coupon);
 
-    public Coupon issueCoupon(long couponId, long hrId);
+    public Coupon issueCoupon(long couponId, long companyId);
+    public Coupon getCouponById(Long id);
+    public List<Coupon> getAllCoupons();
 
-    public List<Coupon> requestCouponsWithDenomination(int denomination);
 
+    public List<Coupon> requestCouponsWithDenomination(int denomination, int couponCount);
+
+//    public List<Coupon> getCouponsByDenomination(Integer denomination);
+
+    public Coupon updateCoupon(Coupon couponDetails);
+
+    public boolean deleteCoupon(Long id);
 }

@@ -1,13 +1,13 @@
 package com.ford.apps.service;
 
+import com.ford.apps.dto.CouponConversion;
 import com.ford.apps.entity.Coupon;
 import com.ford.apps.repository.ICouponRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CouponServiceImpl implements ICouponService{
@@ -20,7 +20,7 @@ public class CouponServiceImpl implements ICouponService{
     }
 
     @Override
-    public Coupon issueCoupon(long couponId, long hrId) {
+    public Coupon issueCoupon(long couponId, long companyId) {
 
         Optional<Coupon> couponOpt = couponRepository.findById(couponId);
 
@@ -33,7 +33,31 @@ public class CouponServiceImpl implements ICouponService{
     }
 
     @Override
-    public List<Coupon> requestCouponsWithDenomination(int denomination) {
+    public Coupon getCouponById(Long id) {
+        return couponRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Coupon> getAllCoupons() {
+        return couponRepository.findAll();
+    }
+
+    @Override
+    public List<Coupon> requestCouponsWithDenomination(int couponCount, int denomination) {
+        List<Coupon> couponsList;
         return null;
+    }
+
+
+    @Override
+    public Coupon updateCoupon(Coupon coupon) {
+
+        return couponRepository.save(coupon);
+    }
+
+    @Override
+    public boolean deleteCoupon(Long id) {
+        couponRepository.deleteById(id);
+        return true;
     }
 }
